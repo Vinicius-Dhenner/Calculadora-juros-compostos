@@ -22,9 +22,6 @@ type
     LbTotalInvestido: TLabel;
     LbJuros: TLabel;
     LbValorTotal: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
   private
     { Private declarations }
   public

@@ -2,8 +2,8 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Calculadora de Juros Compostos'
-  ClientHeight = 468
-  ClientWidth = 816
+  ClientHeight = 496
+  ClientWidth = 891
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,7 +14,7 @@ object Form1: TForm1
   PixelsPerInch = 96
   TextHeight = 13
   object LbTitulo: TLabel
-    Left = 224
+    Left = 232
     Top = 40
     Width = 380
     Height = 22
@@ -27,141 +27,76 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label1: TLabel
-    Left = 224
+    Left = 232
     Top = 93
     Width = 78
     Height = 13
     Caption = 'VALOR INICIAL:'
   end
   object LbAporteMensal: TLabel
-    Left = 440
+    Left = 448
     Top = 93
     Width = 86
     Height = 13
     Caption = 'APORTE MENSAL:'
   end
   object Label2: TLabel
-    Left = 224
+    Left = 232
     Top = 157
     Width = 123
     Height = 13
     Caption = '% DE RETORNO (ao ano)'
   end
   object LbTempo: TLabel
-    Left = 440
+    Left = 448
     Top = 155
     Width = 131
     Height = 13
     Caption = 'TEMPO DE INVESTIMENTO:'
   end
-  object LbTotalInvestido: TLabel
-    Left = 349
-    Top = 305
-    Width = 108
+  object LbResultado: TLabel
+    Left = 362
+    Top = 328
+    Width = 137
     Height = 37
     Caption = 'R$ 00,00'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -32
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
-    ParentFont = False
-  end
-  object LbJuros: TLabel
-    Left = 349
-    Top = 348
-    Width = 108
-    Height = 37
-    Caption = 'R$ 00,00'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -32
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
-    ParentFont = False
-  end
-  object LbValorTotal: TLabel
-    Left = 349
-    Top = 393
-    Width = 108
-    Height = 37
-    Caption = 'R$ 00,00'
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -32
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label3: TLabel
-    Left = 199
-    Top = 317
-    Width = 120
-    Height = 20
-    Caption = 'TOTAL INVESTIDO: '
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label4: TLabel
-    Left = 199
-    Top = 360
-    Width = 120
-    Height = 20
-    Caption = 'TOTAL INVESTIDO: '
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
-    ParentFont = False
-  end
-  object Label5: TLabel
-    Left = 199
-    Top = 405
-    Width = 120
-    Height = 20
-    Caption = 'TOTAL INVESTIDO: '
-    Font.Charset = ANSI_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
     Font.Name = 'Arial Narrow'
     Font.Style = []
     ParentFont = False
   end
   object EditValorInicial: TEdit
-    Left = 224
+    Left = 232
     Top = 112
     Width = 161
     Height = 21
     TabOrder = 0
   end
   object Edit1: TEdit
-    Left = 440
+    Left = 448
     Top = 112
     Width = 164
     Height = 21
     TabOrder = 1
   end
   object EditJuros: TEdit
-    Left = 224
+    Left = 232
     Top = 176
     Width = 161
     Height = 21
     TabOrder = 2
   end
   object Edit2: TEdit
-    Left = 496
+    Left = 504
     Top = 174
     Width = 108
     Height = 21
     TabOrder = 3
   end
   object CbTempo: TComboBox
-    Left = 440
+    Left = 448
     Top = 174
     Width = 41
     Height = 21
@@ -171,8 +106,8 @@ object Form1: TForm1
       'M'#234's')
   end
   object Button1: TButton
-    Left = 344
-    Top = 236
+    Left = 352
+    Top = 248
     Width = 137
     Height = 33
     Caption = 'CONFERIR RESULTADO'
