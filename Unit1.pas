@@ -25,6 +25,11 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
+    procedure EditValorInicialKeyPress(Sender: TObject; var Key: Char);
+    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure EditJurosKeyPress(Sender: TObject; var Key: Char);
+    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,4 +43,48 @@ implementation
 
 {$R *.dfm}
 
+{ FUNCOES QUE SERA EXECUTADA ENQUANTO ESCREVE NOS INPUTS}
+
+procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+begin
+	key := chr(0);
+	ShowMessage('Digite somente números!');
+end;
+end;
+
+procedure TForm1.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+begin
+	key := chr(0);
+	ShowMessage('Digite somente números!');
+end;
+end;
+
+procedure TForm1.EditJurosKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+begin
+	key := chr(0);
+	ShowMessage('Digite somente números!');
+end;
+end;
+
+procedure TForm1.EditValorInicialKeyPress(Sender: TObject; var Key: Char);
+begin
+  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+begin
+	key := chr(0);
+	ShowMessage('Digite somente números!');
+end;
+end;
+{==========================================}
+
+{ BOTAO DE CONFERIR RESULTADO }
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+   ShowMessage ('DEU CERTO');
+end;
 end.

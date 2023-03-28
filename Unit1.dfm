@@ -55,7 +55,7 @@ object Form1: TForm1
     Caption = 'TEMPO DE INVESTIMENTO:'
   end
   object LbTotalInvestido: TLabel
-    Left = 349
+    Left = 414
     Top = 305
     Width = 108
     Height = 37
@@ -68,7 +68,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object LbJuros: TLabel
-    Left = 349
+    Left = 414
     Top = 348
     Width = 108
     Height = 37
@@ -81,7 +81,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object LbValorTotal: TLabel
-    Left = 349
+    Left = 414
     Top = 393
     Width = 108
     Height = 37
@@ -94,7 +94,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 199
+    Left = 264
     Top = 317
     Width = 120
     Height = 20
@@ -107,7 +107,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 199
+    Left = 264
     Top = 360
     Width = 120
     Height = 20
@@ -120,7 +120,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 199
+    Left = 264
     Top = 405
     Width = 120
     Height = 20
@@ -138,6 +138,7 @@ object Form1: TForm1
     Width = 161
     Height = 21
     TabOrder = 0
+    OnKeyPress = EditValorInicialKeyPress
   end
   object Edit1: TEdit
     Left = 440
@@ -145,13 +146,15 @@ object Form1: TForm1
     Width = 164
     Height = 21
     TabOrder = 1
+    OnKeyPress = Edit1KeyPress
   end
   object EditJuros: TEdit
-    Left = 224
+    Left = 223
     Top = 176
     Width = 161
     Height = 21
     TabOrder = 2
+    OnKeyPress = EditJurosKeyPress
   end
   object Edit2: TEdit
     Left = 496
@@ -159,6 +162,7 @@ object Form1: TForm1
     Width = 108
     Height = 21
     TabOrder = 3
+    OnKeyPress = Edit2KeyPress
   end
   object CbTempo: TComboBox
     Left = 440
@@ -177,5 +181,6 @@ object Form1: TForm1
     Height = 33
     Caption = 'CONFERIR RESULTADO'
     TabOrder = 5
+    OnClick = Button1Click
   end
 end
