@@ -20,8 +20,8 @@ type
     CbTempo: TComboBox;
     Button1: TButton;
     LbTotalInvestido: TLabel;
-    LbJuros: TLabel;
-    LbValorTotal: TLabel;
+    LbRendimentoTotal: TLabel;
+    LbTotal: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
@@ -33,6 +33,7 @@ type
   private
     { Private declarations }
     function CalcularTudo() : String;
+    function CalcularTotalInvestido() : String;
   public
     { Public declarations }
   end;
@@ -45,6 +46,25 @@ implementation
 {$R *.dfm}
 
 {FUNCOES DIVERSAS}
+
+function TForm1.CalcularTotalInvestido() : String;
+var
+  tempo : Integer;
+  valorInicial : Double;
+  aporteMensal : Double;
+  tempo : Integer;
+begin
+  tempo := CbTempo.ItemIndex;
+  valorInicial := StrToFloat(EditValorInicial.Text);
+  aporteMensal := StrToFloat(EditAporteMensal.Text);
+  tempo := StrToInt(EditTempoInvestimento.Text);
+
+  if (tempo = 1) then
+  begin
+     result := IntToStr((aporteMensal * (tempo * 12) + valorInicial));
+  end;
+end;
+
 function TForm1.CalcularTudo() : String;
 begin
   result := 'FUNCAO CHAMADA';
@@ -56,39 +76,41 @@ end;
 
 procedure TForm1.EditAporteMensalKeyPress(Sender: TObject; var Key: Char);
 begin
-  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+if not (key in ['0'..'9', #8]) then
 begin
-	key := chr(0);
-	ShowMessage('Digite somente números!');
+  key := #0;
+  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
 end;
 end;
 
 procedure TForm1.EditTempoInvestimentoKeyPress(Sender: TObject; var Key: Char);
 begin
-  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+if not (key in ['0'..'9', #8]) then
 begin
-	key := chr(0);
-	ShowMessage('Digite somente números!');
+  key := #0;
+  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
 end;
 end;
 
 procedure TForm1.EditJurosKeyPress(Sender: TObject; var Key: Char);
 begin
-  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+if not (key in ['0'..'9', #8]) then
 begin
-	key := chr(0);
-	ShowMessage('Digite somente números!');
+  key := #0;
+  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
 end;
 end;
 
 
 procedure TForm1.EditValorInicialKeyPress(Sender: TObject; var Key: Char);
 begin
-  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+if not (key in ['0'..'9', #8]) then
 begin
-	key := chr(0);
-	ShowMessage('Digite somente números!');
+  key := #0;
+
+  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
 end;
+
 end;
 
 {==========================================}
@@ -96,13 +118,20 @@ end;
 { BOTAO DE CONFERIR RESULTADO }
 procedure TForm1.Button1Click(Sender: TObject);
 begin
+  if (CbTempo.ItemIndex <> 0) AND (CbTempo.ItemIndex <> 1) then
+  begin
+      MessageDlg('SELECIONE UMA OPÇÃO DE TEMPO!' ,mtError, [mbOk], 0);
+  end;
+
   if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
   begin
-        ShowMessage ('DEU CERTO');
+        LbTotalInvestido.Caption := CalcularTotalInvestido();
+        LbRendimentoTotal.Caption := CalcularTudo();
+        LbTotal.Caption := CalcularTudo();
   end
   else
   begin
-        ShowMessage(CalcularTudo());
+        MessageDlg('PREENCHA TODOS OS CAMPOS!' ,mtError, [mbOk], 0);
   end;
 end;
 {===================================}

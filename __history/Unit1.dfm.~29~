@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object LbTitulo: TLabel
@@ -106,12 +107,12 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Label4: TLabel
+  object LbRendimentoTotal: TLabel
     Left = 264
-    Top = 360
-    Width = 120
+    Top = 362
+    Width = 102
     Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Caption = 'RENDIMENTOS: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -119,12 +120,12 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Label5: TLabel
+  object LbTotal: TLabel
     Left = 264
-    Top = 405
-    Width = 120
+    Top = 407
+    Width = 96
     Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Caption = 'VALOR TOTAL: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -138,16 +139,15 @@ object Form1: TForm1
     Width = 161
     Height = 21
     TabOrder = 0
-    OnChange = EditValorInicialChange
     OnKeyPress = EditValorInicialKeyPress
   end
-  object Edit1: TEdit
+  object EditAporteMensal: TEdit
     Left = 440
     Top = 112
     Width = 164
     Height = 21
     TabOrder = 1
-    OnKeyPress = Edit1KeyPress
+    OnKeyPress = EditAporteMensalKeyPress
   end
   object EditJuros: TEdit
     Left = 223
@@ -157,20 +157,20 @@ object Form1: TForm1
     TabOrder = 2
     OnKeyPress = EditJurosKeyPress
   end
-  object Edit2: TEdit
+  object EditTempoInvestimento: TEdit
     Left = 496
     Top = 174
     Width = 108
     Height = 21
-    TabOrder = 3
-    OnKeyPress = Edit2KeyPress
+    TabOrder = 4
+    OnKeyPress = EditTempoInvestimentoKeyPress
   end
   object CbTempo: TComboBox
     Left = 440
     Top = 174
     Width = 41
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
     Items.Strings = (
       'Ano'
       'M'#234's')

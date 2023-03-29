@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object LbTitulo: TLabel
@@ -140,13 +141,13 @@ object Form1: TForm1
     TabOrder = 0
     OnKeyPress = EditValorInicialKeyPress
   end
-  object Edit1: TEdit
+  object EditAporteMensal: TEdit
     Left = 440
     Top = 112
     Width = 164
     Height = 21
     TabOrder = 1
-    OnKeyPress = Edit1KeyPress
+    OnKeyPress = EditAporteMensalKeyPress
   end
   object EditJuros: TEdit
     Left = 223
@@ -161,7 +162,7 @@ object Form1: TForm1
     Top = 174
     Width = 108
     Height = 21
-    TabOrder = 3
+    TabOrder = 4
     OnKeyPress = EditTempoInvestimentoKeyPress
   end
   object CbTempo: TComboBox
@@ -169,7 +170,7 @@ object Form1: TForm1
     Top = 174
     Width = 41
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
     Items.Strings = (
       'Ano'
       'M'#234's')

@@ -11,7 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
-  OnCreate = FormCreate
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object LbTitulo: TLabel
@@ -68,7 +68,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object LbJuros: TLabel
+  object LbRendimentoTotal: TLabel
     Left = 414
     Top = 348
     Width = 108
@@ -81,9 +81,9 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object LbValorTotal: TLabel
+  object LbTotal: TLabel
     Left = 414
-    Top = 393
+    Top = 391
     Width = 108
     Height = 37
     Caption = 'R$ 00,00'
@@ -109,10 +109,10 @@ object Form1: TForm1
   end
   object Label4: TLabel
     Left = 264
-    Top = 360
-    Width = 120
+    Top = 362
+    Width = 102
     Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Caption = 'RENDIMENTOS: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -122,10 +122,10 @@ object Form1: TForm1
   end
   object Label5: TLabel
     Left = 264
-    Top = 405
-    Width = 120
+    Top = 407
+    Width = 96
     Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Caption = 'VALOR TOTAL: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
@@ -162,7 +162,7 @@ object Form1: TForm1
     Top = 174
     Width = 108
     Height = 21
-    TabOrder = 3
+    TabOrder = 4
     OnKeyPress = EditTempoInvestimentoKeyPress
   end
   object CbTempo: TComboBox
@@ -170,7 +170,7 @@ object Form1: TForm1
     Top = 174
     Width = 41
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
     Items.Strings = (
       'Ano'
       'M'#234's')

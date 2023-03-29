@@ -11,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
   object LbTitulo: TLabel
@@ -67,7 +68,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object LbJuros: TLabel
+  object LbRendimentoTotal: TLabel
     Left = 414
     Top = 348
     Width = 108
@@ -80,9 +81,9 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object LbValorTotal: TLabel
+  object LbTotal: TLabel
     Left = 414
-    Top = 393
+    Top = 391
     Width = 108
     Height = 37
     Caption = 'R$ 00,00'
@@ -94,42 +95,42 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 264
+    Left = 252
     Top = 317
-    Width = 120
-    Height = 20
+    Width = 153
+    Height = 19
     Caption = 'TOTAL INVESTIDO: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 264
-    Top = 360
-    Width = 120
-    Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Left = 252
+    Top = 363
+    Width = 130
+    Height = 19
+    Caption = 'RENDIMENTOS: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 264
-    Top = 405
-    Width = 120
-    Height = 20
-    Caption = 'TOTAL INVESTIDO: '
+    Left = 252
+    Top = 407
+    Width = 121
+    Height = 19
+    Caption = 'VALOR TOTAL: '
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -16
-    Font.Name = 'Arial Narrow'
-    Font.Style = []
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
     ParentFont = False
   end
   object EditValorInicial: TEdit
@@ -169,6 +170,7 @@ object Form1: TForm1
     Top = 174
     Width = 41
     Height = 21
+    Color = clBtnFace
     TabOrder = 3
     Items.Strings = (
       'Ano'
