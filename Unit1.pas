@@ -11,11 +11,11 @@ type
     LbTitulo: TLabel;
     EditValorInicial: TEdit;
     Label1: TLabel;
-    Edit1: TEdit;
+    EditAporteMensal: TEdit;
     LbAporteMensal: TLabel;
     EditJuros: TEdit;
     Label2: TLabel;
-    Edit2: TEdit;
+    EditTempoInvestimento: TEdit;
     LbTempo: TLabel;
     CbTempo: TComboBox;
     Button1: TButton;
@@ -26,12 +26,13 @@ type
     Label4: TLabel;
     Label5: TLabel;
     procedure EditValorInicialKeyPress(Sender: TObject; var Key: Char);
-    procedure Edit1KeyPress(Sender: TObject; var Key: Char);
+    procedure EditAporteMensalKeyPress(Sender: TObject; var Key: Char);
     procedure EditJurosKeyPress(Sender: TObject; var Key: Char);
-    procedure Edit2KeyPress(Sender: TObject; var Key: Char);
+    procedure EditTempoInvestimentoKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
+    function CalcularTudo() : String;
   public
     { Public declarations }
   end;
@@ -43,9 +44,17 @@ implementation
 
 {$R *.dfm}
 
+{FUNCOES DIVERSAS}
+function TForm1.CalcularTudo() : String;
+begin
+  result := 'FUNCAO CHAMADA';
+end;
+{========================}
+
+
 { FUNCOES QUE SERA EXECUTADA ENQUANTO ESCREVE NOS INPUTS}
 
-procedure TForm1.Edit1KeyPress(Sender: TObject; var Key: Char);
+procedure TForm1.EditAporteMensalKeyPress(Sender: TObject; var Key: Char);
 begin
   if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
 begin
@@ -54,7 +63,7 @@ begin
 end;
 end;
 
-procedure TForm1.Edit2KeyPress(Sender: TObject; var Key: Char);
+procedure TForm1.EditTempoInvestimentoKeyPress(Sender: TObject; var Key: Char);
 begin
   if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
 begin
@@ -72,19 +81,30 @@ begin
 end;
 end;
 
+
 procedure TForm1.EditValorInicialKeyPress(Sender: TObject; var Key: Char);
 begin
-  if ((Ord (key) < ord ('0')) or (Ord (key) > ord('9')))then
+if not (key in ['0'..'9', #8]) then // Adiciona o #8 (Backspace) ao conjunto de caracteres permitidos
 begin
-	key := chr(0);
-	ShowMessage('Digite somente números!');
+  key := #0; // Define a tecla pressionada como nula para impedir que o caractere digitado apareça no campo
+  ShowMessage('Digite somente números!'); // Exibe uma mensagem de erro ao usuário
 end;
+
 end;
+
 {==========================================}
 
 { BOTAO DE CONFERIR RESULTADO }
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-   ShowMessage ('DEU CERTO');
+  if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
+  begin
+        ShowMessage(CalcularTudo());
+  end
+  else
+  begin
+        MessageDlg('PREENCHA TODOS OS CAMPOS' ,mtInformation, [mbOk], 0);
+  end;
 end;
+{===================================}
 end.

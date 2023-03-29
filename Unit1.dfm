@@ -140,13 +140,13 @@ object Form1: TForm1
     TabOrder = 0
     OnKeyPress = EditValorInicialKeyPress
   end
-  object Edit1: TEdit
+  object EditAporteMensal: TEdit
     Left = 440
     Top = 112
     Width = 164
     Height = 21
     TabOrder = 1
-    OnKeyPress = Edit1KeyPress
+    OnKeyPress = EditAporteMensalKeyPress
   end
   object EditJuros: TEdit
     Left = 223
@@ -156,20 +156,20 @@ object Form1: TForm1
     TabOrder = 2
     OnKeyPress = EditJurosKeyPress
   end
-  object Edit2: TEdit
+  object EditTempoInvestimento: TEdit
     Left = 496
     Top = 174
     Width = 108
     Height = 21
-    TabOrder = 3
-    OnKeyPress = Edit2KeyPress
+    TabOrder = 4
+    OnKeyPress = EditTempoInvestimentoKeyPress
   end
   object CbTempo: TComboBox
     Left = 440
     Top = 174
     Width = 41
     Height = 21
-    TabOrder = 4
+    TabOrder = 3
     Items.Strings = (
       'Ano'
       'M'#234's')
