@@ -66,7 +66,7 @@ begin
   end
   else if (tempoOpcao = 0) then
   begin
-    result :=  FloatToStr(((tempo * 12) * aporteMensal) + valorInicial);
+    result :=  FormatFloat('R$ #,##0.00',((tempo * 12) * aporteMensal) + valorInicial);
   end
   else
   begin
@@ -90,17 +90,31 @@ begin
   aporteMensal := StrToFloat(EditAporteMensal.Text);
   tempo := StrToInt(EditTempoInvestimento.Text);
   porcentagemDeRetorno := StrToFloat(EditJuros.Text);
+  resultado := 0;
+  resultado := resultado + valorInicial;
+  porcentagemDeRetorno := porcentagemDeRetorno / 12;
 
   if (tempoOpcao = 1) then
   begin
-  resultado := resultado + valorInicial;
-  porcentagemDeRetorno := porcentagemDeRetorno / 12;
      for I := 0 to tempo do
       begin
-        resultado := (resultado + (porcentagemDeRetorno / 100)) + aporteMensal;
+        resultado := aporteMensal + (resultado + (porcentagemDeRetorno / 100)) ;
       end;
-      result := FloatToStr(resultado);
+      result := FormatFloat('R$ #,##0.00', resultado);
+  end
+  else if (tempoOpcao = 0) then
+  begin
+    for I := 0 to (tempo * 12) do
+      begin
+        resultado := aporteMensal + (resultado + (porcentagemDeRetorno / 100)) ;
+      end;
+      result := FormatFloat('R$ #,##0.00', resultado);
+  end
+  else
+  begin
+    result := 'erro';
   end;
+
 
 end;
 {========================}
@@ -151,6 +165,8 @@ end;
 
 { BOTAO DE CONFERIR RESULTADO }
 procedure TForm1.Button1Click(Sender: TObject);
+var
+  juros : Double;
 begin
   if (CbTempo.ItemIndex <> 0) AND (CbTempo.ItemIndex <> 1) then
   begin
@@ -158,8 +174,9 @@ begin
   end
   else if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
   begin
+        juros := StrToFloat(CalcularTudo()) - StrToFloat(CalcularTotalInvestido());
         LbTotalInvestido.Caption := CalcularTotalInvestido();
-        LbRendimentoTotal.Caption := CalcularTudo();
+        LbRendimentoTotal.Caption := FormatFloat('R$ #,##0.00', juros);
         LbTotal.Caption := CalcularTudo();
   end
   else

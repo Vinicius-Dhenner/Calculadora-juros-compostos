@@ -54,6 +54,7 @@ var
   aporteMensal : Double;
   tempo : Integer;
 begin
+
   tempoOpcao := CbTempo.ItemIndex;
   valorInicial := StrToFloat(EditValorInicial.Text);
   aporteMensal := StrToFloat(EditAporteMensal.Text);
@@ -65,7 +66,7 @@ begin
   end
   else if (tempoOpcao = 0) then
   begin
-    result :=  FloatToStr(((tempo * 12) * aporteMensal) + valorInicial);
+    result :=  FormatFloat('R$ #,##0.00',((tempo * 12) * aporteMensal) + valorInicial);
   end
   else
   begin
@@ -79,10 +80,27 @@ var
   valorInicial : Double;
   aporteMensal : Double;
   tempo : Integer;
+  I: Integer;
+  resultado : Double;
+  porcentagemDeRetorno : Double;
 begin
+
+  tempoOpcao := CbTempo.ItemIndex;
+  valorInicial := StrToFloat(EditValorInicial.Text);
+  aporteMensal := StrToFloat(EditAporteMensal.Text);
+  tempo := StrToInt(EditTempoInvestimento.Text);
+  porcentagemDeRetorno := StrToFloat(EditJuros.Text);
+
   if (tempoOpcao = 1) then
   begin
-
+  resultado := 0;
+  resultado := resultado + valorInicial;
+  porcentagemDeRetorno := porcentagemDeRetorno / 12;
+     for I := 0 to tempo do
+      begin
+        resultado := aporteMensal + (resultado + (porcentagemDeRetorno / 100)) ;
+      end;
+      result := FormatFloat('R$ #,##0.00', resultado);
   end;
 
 end;
@@ -143,7 +161,7 @@ begin
   begin
         LbTotalInvestido.Caption := CalcularTotalInvestido();
         LbRendimentoTotal.Caption := CalcularTudo();
-        LbTotal.Caption := CalcularTudo();
+        LbTotal.Caption := 'SERA EXIBIDO O VALOR TOTAL';
   end
   else
   begin
