@@ -49,19 +49,23 @@ implementation
 
 function TForm1.CalcularTotalInvestido() : String;
 var
-  tempo : Integer;
+  tempoOpcao : Integer;
   valorInicial : Double;
   aporteMensal : Double;
   tempo : Integer;
 begin
-  tempo := CbTempo.ItemIndex;
+  tempoOpcao := CbTempo.ItemIndex;
   valorInicial := StrToFloat(EditValorInicial.Text);
   aporteMensal := StrToFloat(EditAporteMensal.Text);
   tempo := StrToInt(EditTempoInvestimento.Text);
 
-  if (tempo = 1) then
+  if (tempoOpcao = 1) then
   begin
-     result := valorInicial + (aporteMensal
+     result := FloatToStr(((aporteMensal * (tempo * 12)) + valorInicial));
+  end
+  else
+  begin
+    result := 'erro';
   end;
 end;
 
@@ -121,9 +125,8 @@ begin
   if (CbTempo.ItemIndex <> 0) AND (CbTempo.ItemIndex <> 1) then
   begin
       MessageDlg('SELECIONE UMA OPÇÃO DE TEMPO!' ,mtError, [mbOk], 0);
-  end;
-
-  if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
+  end
+  else if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
   begin
         LbTotalInvestido.Caption := CalcularTotalInvestido();
         LbRendimentoTotal.Caption := CalcularTudo();

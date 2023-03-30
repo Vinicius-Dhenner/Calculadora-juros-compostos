@@ -62,6 +62,10 @@ begin
   if (tempoOpcao = 1) then
   begin
      result := FloatToStr(((aporteMensal * (tempo * 12)) + valorInicial));
+  end
+  else
+  begin
+    result := 'erro';
   end;
 end;
 

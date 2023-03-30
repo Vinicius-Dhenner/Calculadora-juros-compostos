@@ -54,6 +54,7 @@ var
   aporteMensal : Double;
   tempo : Integer;
 begin
+
   tempoOpcao := CbTempo.ItemIndex;
   valorInicial := StrToFloat(EditValorInicial.Text);
   aporteMensal := StrToFloat(EditAporteMensal.Text);
@@ -61,7 +62,11 @@ begin
 
   if (tempoOpcao = 1) then
   begin
-     result := FloatToStr(((aporteMensal * (tempo * 12)) + valorInicial));
+     result := FloatToStr((tempo * aporteMensal) + valorInicial);
+  end
+  else if (tempoOpcao = 0) then
+  begin
+    result :=  FloatToStr(((tempo * 12) * aporteMensal) + valorInicial);
   end
   else
   begin
@@ -70,8 +75,33 @@ begin
 end;
 
 function TForm1.CalcularTudo() : String;
+var
+  tempoOpcao : Integer;
+  valorInicial : Double;
+  aporteMensal : Double;
+  tempo : Integer;
+  I: Integer;
+  resultado : Double;
+  porcentagemDeRetorno : Double;
 begin
-  result := 'FUNCAO CHAMADA';
+
+  tempoOpcao := CbTempo.ItemIndex;
+  valorInicial := StrToFloat(EditValorInicial.Text);
+  aporteMensal := StrToFloat(EditAporteMensal.Text);
+  tempo := StrToInt(EditTempoInvestimento.Text);
+  porcentagemDeRetorno := StrToFloat(EditJuros.Text);
+
+  if (tempoOpcao = 1) then
+  begin
+  resultado := resultado + valorInicial;
+  porcentagemDeRetorno := porcentagemDeRetorno / 12;
+     for I := 0 to tempo do
+      begin
+        resultado := (resultado + (porcentagemDeRetorno / 100)) + aporteMensal;
+      end;
+      result := FloatToStr(resultado);
+  end;
+
 end;
 {========================}
 
@@ -125,13 +155,12 @@ begin
   if (CbTempo.ItemIndex <> 0) AND (CbTempo.ItemIndex <> 1) then
   begin
       MessageDlg('SELECIONE UMA OPÇÃO DE TEMPO!' ,mtError, [mbOk], 0);
-  end;
-
-  if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
+  end
+  else if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
   begin
         LbTotalInvestido.Caption := CalcularTotalInvestido();
         LbRendimentoTotal.Caption := CalcularTudo();
-        LbTotal.Caption := CalcularTudo();
+        LbTotal.Caption := 'SERA EXIBIDO O VALOR TOTAL';
   end
   else
   begin
