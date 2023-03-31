@@ -169,7 +169,7 @@ procedure TForm1.Button1Click(Sender: TObject);
 var
   juros : Currency;
 begin
-  if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') OR (CbTempo.ItemIndex <> 0) OR (CbTempo.ItemIndex <> 1) then
+  if (EditValorInicial.Text <> '') AND (EditAporteMensal.Text <> '') AND (EditJuros.Text <> '') AND (EditTempoInvestimento.Text <> '') AND ((CbTempo.ItemIndex <> 0) OR (CbTempo.ItemIndex <> 1)) then
   begin
         juros := CalcularTudo() - CalcularTotalInvestido();
 

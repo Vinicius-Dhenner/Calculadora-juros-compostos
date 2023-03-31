@@ -4,7 +4,7 @@ object Form1: TForm1
   Caption = 'Calculadora de Juros Compostos'
   ClientHeight = 467
   ClientWidth = 816
-  Color = clBtnFace
+  Color = clSkyBlue
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -56,7 +56,7 @@ object Form1: TForm1
     Caption = 'TEMPO DE INVESTIMENTO:'
   end
   object LbTotalInvestido: TLabel
-    Left = 414
+    Left = 410
     Top = 305
     Width = 108
     Height = 37
@@ -69,7 +69,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object LbRendimentoTotal: TLabel
-    Left = 414
+    Left = 410
     Top = 347
     Width = 108
     Height = 37
@@ -82,7 +82,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object LbTotal: TLabel
-    Left = 414
+    Left = 410
     Top = 392
     Width = 108
     Height = 37
@@ -95,7 +95,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 252
+    Left = 248
     Top = 317
     Width = 153
     Height = 19
@@ -108,7 +108,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 252
+    Left = 248
     Top = 363
     Width = 130
     Height = 19
@@ -121,7 +121,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 252
+    Left = 248
     Top = 407
     Width = 121
     Height = 19
@@ -177,7 +177,7 @@ object Form1: TForm1
       'M'#234's')
   end
   object Button1: TButton
-    Left = 344
+    Left = 342
     Top = 236
     Width = 137
     Height = 33
