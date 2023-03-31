@@ -2,7 +2,7 @@ object Form1: TForm1
   Left = 0
   Top = 0
   Caption = 'Calculadora de Juros Compostos'
-  ClientHeight = 468
+  ClientHeight = 467
   ClientWidth = 816
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -70,7 +70,7 @@ object Form1: TForm1
   end
   object LbRendimentoTotal: TLabel
     Left = 414
-    Top = 348
+    Top = 347
     Width = 108
     Height = 37
     Caption = 'R$ 00,00'
@@ -83,7 +83,7 @@ object Form1: TForm1
   end
   object LbTotal: TLabel
     Left = 414
-    Top = 391
+    Top = 392
     Width = 108
     Height = 37
     Caption = 'R$ 00,00'

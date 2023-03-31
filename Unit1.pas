@@ -32,8 +32,8 @@ type
     procedure Button1Click(Sender: TObject);
   private
     { Private declarations }
-    function CalcularTudo() : String;
-    function CalcularTotalInvestido() : String;
+    function CalcularTudo() : Currency;
+    function CalcularTotalInvestido() : Currency;
   public
     { Public declarations }
   end;
@@ -47,49 +47,49 @@ implementation
 
 {FUNCOES DIVERSAS}
 
-function TForm1.CalcularTotalInvestido() : String;
+function TForm1.CalcularTotalInvestido() : Currency;
 var
   tempoOpcao : Integer;
-  valorInicial : Double;
-  aporteMensal : Double;
+  valorInicial : Currency;
+  aporteMensal : Currency;
   tempo : Integer;
 begin
 
   tempoOpcao := CbTempo.ItemIndex;
-  valorInicial := StrToFloat(EditValorInicial.Text);
-  aporteMensal := StrToFloat(EditAporteMensal.Text);
+  valorInicial := StrToCurr(EditValorInicial.Text);
+  aporteMensal := StrToCurr(EditAporteMensal.Text);
   tempo := StrToInt(EditTempoInvestimento.Text);
 
   if (tempoOpcao = 1) then
   begin
-     result := FloatToStr((tempo * aporteMensal) + valorInicial);
+     result := (tempo * aporteMensal) + valorInicial;
   end
   else if (tempoOpcao = 0) then
   begin
-    result :=  FormatFloat('R$##,##0.00',((tempo * 12) * aporteMensal) + valorInicial);
+    result :=  ((tempo * aporteMensal) * 12) + valorInicial;
   end
   else
   begin
-    result := 'erro';
+    result := 0;
   end;
 end;
 
-function TForm1.CalcularTudo() : String;
+function TForm1.CalcularTudo() : Currency;
 var
   tempoOpcao : Integer;
-  valorInicial : Double;
-  aporteMensal : Double;
+  valorInicial : Currency;
+  aporteMensal : Currency;
   tempo : Integer;
   I: Integer;
-  resultado : Double;
-  porcentagemDeRetorno : Double;
+  resultado : Currency;
+  porcentagemDeRetorno : Currency;
 begin
 
   tempoOpcao := CbTempo.ItemIndex;
-  valorInicial := StrToFloat(EditValorInicial.Text);
-  aporteMensal := StrToFloat(EditAporteMensal.Text);
+  valorInicial := StrToCurr(EditValorInicial.Text);
+  aporteMensal := StrToCurr(EditAporteMensal.Text);
   tempo := StrToInt(EditTempoInvestimento.Text);
-  porcentagemDeRetorno := StrToFloat(EditJuros.Text);
+  porcentagemDeRetorno := StrToCurr(EditJuros.Text);
   resultado := 0;
   resultado := resultado + valorInicial;
   porcentagemDeRetorno := porcentagemDeRetorno / 12;
@@ -98,22 +98,22 @@ begin
   begin
      for I := 0 to tempo do
       begin
-        resultado := aporteMensal + (resultado + (porcentagemDeRetorno / 100)) ;
+        resultado := (resultado + aporteMensal) + (resultado * (porcentagemDeRetorno / 100)) ;
       end;
-      result := FormatFloat('R$##,##0.00', resultado);
+      result :=  resultado;
       i :=0;
   end
   else if (tempoOpcao = 0) then
   begin
     for I := 0 to (tempo * 12) do
       begin
-        resultado := aporteMensal + (resultado + (porcentagemDeRetorno / 100)) ;
+        resultado := (resultado +aporteMensal) + (resultado * (porcentagemDeRetorno / 100)) ;
       end;
-      result := FormatFloat('R$##,##0.00', resultado);
+      result := resultado;
   end
   else
   begin
-    result := 'erro';
+    result := 0;
   end;
 
 
@@ -167,18 +167,15 @@ end;
 { BOTAO DE CONFERIR RESULTADO }
 procedure TForm1.Button1Click(Sender: TObject);
 var
-  juros : Double;
+  juros : Currency;
 begin
-  if (CbTempo.ItemIndex <> 0) AND (CbTempo.ItemIndex <> 1) then
+  if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') OR (CbTempo.ItemIndex <> 0) OR (CbTempo.ItemIndex <> 1) then
   begin
-      MessageDlg('SELECIONE UMA OPÇÃO DE TEMPO!' ,mtError, [mbOk], 0);
-  end
-  else if (EditValorInicial.Text <> '') OR (EditAporteMensal.Text <> '') OR (EditJuros.Text <> '') OR (EditTempoInvestimento.Text <> '') then
-  begin
-        juros := StrToFloat(CalcularTudo()) - StrToFloat(CalcularTotalInvestido());
-        LbTotalInvestido.Caption := CalcularTotalInvestido();
-        LbRendimentoTotal.Caption := FormatFloat('R$ #,##0.00', juros);
-        LbTotal.Caption := CalcularTudo();
+        juros := CalcularTudo() - CalcularTotalInvestido();
+
+        LbTotalInvestido.Caption := FormatCurr('R$ #,##0.00', CalcularTotalInvestido());
+        LbRendimentoTotal.Caption := FormatCurr('R$ #,##0.00', juros);
+        LbTotal.Caption := FormatCurr('R$ #,##0.00',CalcularTudo());
   end
   else
   begin
