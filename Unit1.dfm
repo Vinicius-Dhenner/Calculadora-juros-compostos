@@ -138,6 +138,7 @@ object Form1: TForm1
     Top = 112
     Width = 161
     Height = 21
+    NumbersOnly = True
     TabOrder = 0
     OnKeyPress = EditValorInicialKeyPress
   end

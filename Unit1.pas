@@ -30,6 +30,7 @@ type
     procedure EditJurosKeyPress(Sender: TObject; var Key: Char);
     procedure EditTempoInvestimentoKeyPress(Sender: TObject; var Key: Char);
     procedure Button1Click(Sender: TObject);
+    procedure somenteNumeros( Key: Char; Edit : TEdit );
   private
     { Private declarations }
     function CalcularTudo() : Currency;
@@ -118,6 +119,17 @@ begin
 
 
 end;
+
+procedure TForm1. somenteNumeros (Key: Char; Edit : TEdit);
+begin
+  if not (key in ['0'..'9', #8]) then
+begin
+  key := #0;
+  Edit.Text := '';
+  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
+end;
+end;
+
 {========================}
 
 
@@ -125,41 +137,23 @@ end;
 
 procedure TForm1.EditAporteMensalKeyPress(Sender: TObject; var Key: Char);
 begin
-if not (key in ['0'..'9', #8]) then
-begin
-  key := #0;
-  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
-end;
+  somenteNumeros(Key, EditAporteMensal);
 end;
 
 procedure TForm1.EditTempoInvestimentoKeyPress(Sender: TObject; var Key: Char);
 begin
-if not (key in ['0'..'9', #8]) then
-begin
-  key := #0;
-  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
-end;
+  somenteNumeros(Key, EditTempoInvestimento);
 end;
 
 procedure TForm1.EditJurosKeyPress(Sender: TObject; var Key: Char);
 begin
-if not (key in ['0'..'9', #8]) then
-begin
-  key := #0;
-  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
-end;
+  somenteNumeros(Key, EditJuros);
 end;
 
 
 procedure TForm1.EditValorInicialKeyPress(Sender: TObject; var Key: Char);
 begin
-if not (key in ['0'..'9', #8]) then
-begin
-  key := #0;
-
-  MessageDlg('DIGITE SOMENTE NÚMEROS!' ,mtError, [mbOk], 0);
-end;
-
+  somenteNumeros(Key, EditValorInicial);
 end;
 
 {==========================================}
